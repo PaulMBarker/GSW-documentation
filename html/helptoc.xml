@@ -64,6 +64,9 @@
       <tocitem target="gsw_SP_salinometer.html" image="HelpIcon.FUNCTION">
         gsw_SP_salinometer<!-- Practical Salinity from a laboratory salinometer (inc. for SP &lt; 2) -->
       </tocitem>
+	  <tocitem target="gsw_SP_from_SK.html" image="HelpIcon.FUNCTION">
+        gsw_SP_from_SK<!-- Practical Salinity from Knudsen Salinity -->
+      </tocitem>
     </tocitem>
     <tocitem target="gsw_contents.html#3">
       Absolute Salinity (SA), Preformed Salinity (Sstar) and Conservative Temperature (CT)
