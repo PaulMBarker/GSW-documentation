@@ -1,5 +1,4 @@
 # GSW-documentation
-Gibbs-SeaWater (GSW) Oceanographic Toolbox help pages in html, and associated pdf files
 
 Gibbs-SeaWater (GSW) Oceanographic Toolbox in Matlab - Help pages and pdf files only !!!!
 
