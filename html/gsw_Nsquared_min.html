@@ -1,9 +1,7 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>gsw_Nsquared</title><style type="text/css">
+<title>gsw_Nsquared_min</title><style type="text/css">
 
 body {
   background-color: white;
@@ -59,32 +57,33 @@ p.footer {
   color: gray;
 }
 
-  </style></head><body><div class="content"><h1>gsw_Nsquared</h1>
-  <!--introduction-->
-  <pre><font size="5"><b>buoyancy (Brunt-Vaisala) frequency squared (N<sup>2</sup>) 
+  </style></head><body>
+<div class="content"><h1>gsw_Nsquared_min</h1>
+<pre><font size="5"><b>minimum buoyancy (Brunt-Vaisala) frequency squared (N<sup>2</sup>) 
 (75-term equation)</b></font></pre><!--/introduction-->
-  <font size="4"><h2>Contents</h2>
-  <div><ul><li><a href="#1">USAGE:</a></li>
-  <li><a href="#2">DESCRIPTION:</a></li>
-  <li><a href="#3">INPUT:</a></li>
-  <li><a href="#4">OUTPUT:</a></li>
-  <li><a href="#5">EXAMPLE:</a></li>
-  <li><a href="#6">AUTHOR:</a></li>
-  <li><a href="#7">VERSION NUMBER:</a></li>
-  <li><a href="#8">REFERENCES:</a></li></ul></div>
-  <h2>USAGE:<a name="1"></a></h2>
-  <pre>[N2, p_mid] = gsw_Nsquared(SA,CT,p,{lat})</pre>
-  <h2>DESCRIPTION:<a name="2"></a></h2>
-  <pre>Calculates the buoyancy frequency squared (N<sup>2</sup>)(i.e. the Brunt-Vaisala
-frequency squared) at the mid pressure from the equation,</pre>
-<pre>                             ( beta x d(SA) - alpha x d(CT) )
-   N<sup>2</sup>  =  g<sup>2</sup> x rho_local x  ---------------------------------
-                                          dP</pre>
-<pre>Note. This routine uses rho from "gsw_rho", which is the computationally 
-  efficient 75-term expression for specific volume in terms of SA, CT and 
-  p (Roquet et al., 2015).
+<font size="4"><h2>Contents</h2>
+<div><ul><li><a href="#1">USAGE:</a></li>
+<li><a href="#2">DESCRIPTION:</a></li>
+<li><a href="#3">INPUT:</a></li>
+<li><a href="#4">OUTPUT:</a></li>
+<li><a href="#5">EXAMPLE:</a></li>
+<li><a href="#6">AUTHOR:</a></li>
+<li><a href="#7">VERSION NUMBER:</a></li>
+<li><a href="#8">REFERENCES:</a></li></ul></div>
+<h2>USAGE:<a name="1"></a></h2>
+<pre>[N2, N2_p, N2_specvol, N2_alpha, N2_beta, dSA, dCT, dp] = ...
+                                       gsw_Nsquared_min(SA,CT,p,{lat})</pre>
+<h2>DESCRIPTION:<a name="2"></a></h2>
+<pre>Calculates the minimum buoyancy frequency squared (N<sup>2</sup>)(i.e. the 
+Brunt-Vaisala frequency squared) at the mid pressure from the equation,</pre>
+<pre>                 ( beta x d(SA) - alpha x d(CT) )
+   N<sup>2</sup>  =  g<sup>2</sup>  x  ---------------------------------
+                        specvol_local x dP</pre>
+<pre>Note. This routine uses specvol from "gsw_specvol", which is the 
+computationally efficient 75-term expression for specific volume in 
+terms of SA, CT and p (Roquet et al., 2015).
 Note also that the pressure increment, dP, in the above formula is in
-  Pa, so that it is 10<sup>4</sup> times the pressure increment dp in dbar.</pre>
+Pa, so that it is 10<sup>4</sup> times the pressure increment dp in dbar.</pre>
 <pre>Note that the 75-term equation has been fitted in a restricted range of 
 parameter space, and is most accurate inside the "oceanographic funnel" 
 described in McDougall et al. (2003).  The GSW library function 
@@ -110,32 +109,80 @@ lat  =  latitude in decimal degrees north                [ -90 ... +90 ]
 p &amp; lat may have dimensions 1x1 or Mx1 or 1xN or MxN, where SA &amp; CT
 are MxN.</pre>
 <h2>OUTPUT:<a name="4"></a></h2>
-<pre>N2     =  Brunt-Vaisala Frequency squared  (M-1xN)               [ s<sup>-2</sup> ]
-p_mid  =  mid pressure between p grid      (M-1xN)              [ dbar ]</pre>
+<pre>N2         =  Brunt-Vaisala Frequency squared  (M-1xN)           [ s<sup>-2</sup> ]
+N2_p       =  pressure of minimum N2                            [ dbar ]
+N2_specvol =  specific volume at the minimum N2               [ kg m<sup>-3</sup> ]
+N2_alpha   =  thermal expansion coefficient with respect         [ K<sup>-1</sup> ]
+              to Conservative Temperature at the minimum N2
+N2_beta    =  saline contraction coefficient at constant      [ kg g<sup>-1</sup> ]
+              Conservative Temperature at the minimum N2
+dSA        =  difference in salinity between bottles          [ g kg<sup>-1</sup> ]
+dCT        =  difference in Conservative Temperature between   [ deg C ]
+              bottles
+dp         =  difference in pressure between bottles            [ dbar ]</pre>
 <h2>EXAMPLE:<a name="5"></a></h2>
 <pre>SA  = [34.7118; 34.8915; 35.0256; 34.8472; 34.7366; 34.7324;]
 CT  = [28.8099; 28.4392; 22.7862; 10.2262;  6.8272;  4.3236;]
 p   = [     10;      50;     125;     250;     600;    1000;]
 lat = 4;</pre>
-<pre>[N2, p_mid] = gsw_Nsquared(SA,CT,p,lat)</pre>
+<pre>[N2, N2_p, N2_specvol, N2_alpha, N2_beta, dSA, dCT, dp] = ...
+                                     gsw_Nsquared_min(SA,CT,p,lat)</pre>
 <pre>N2 =</pre>
 <pre>1.0e-003 *</pre>
-<pre>   0.060843209693499
-   0.235723066151305
-   0.216599928330380
-   0.012941204313372
-   0.008434782795209</pre>
-<pre>p_mid =</pre>
-<pre>1.0e+002 *</pre>
-<pre>   0.300000000000000
-   0.875000000000000
-   1.875000000000000
-   4.250000000000000
-   8.000000000000000</pre>
+<pre>    0.0608
+    0.2204
+    0.1606
+    0.0116
+    0.0079</pre>
+<pre>N2_p =</pre>
+<pre>        50
+       125
+       250
+       600
+      1000</pre>
+<pre>N2_specvol =</pre>
+<pre>   1.0e-03 *</pre>
+<pre>    0.9782
+    0.9762
+    0.9730
+    0.9710
+    0.9690</pre>
+<pre>N2_alpha =</pre>
+<pre>   1.0e-03 *</pre>
+<pre>    0.3227
+    0.2811
+    0.1732
+    0.1463
+    0.1294</pre>
+<pre>N2_beta =</pre>
+<pre>   1.0e-03 *</pre>
+<pre>    0.7176
+    0.7262
+    0.7505
+    0.7551
+    0.7571</pre>
+<pre>dSA =</pre>
+<pre>    0.1797
+    0.1341
+   -0.1784
+   -0.1106
+   -0.0042</pre>
+<pre>dCT =</pre>
+<pre>   -0.3707
+   -5.6530
+  -12.5600
+   -3.3990
+   -2.5036</pre>
+<pre>dp =</pre>
+<pre>        40
+        75
+       125
+       350
+       400</pre>
 <h2>AUTHOR:<a name="6"></a></h2>
 <pre>Trevor McDougall and Paul Barker.              [ <a href="mailto:help@teos-10.org">help@teos-10.org</a> ]</pre>
 <h2>VERSION NUMBER:<a name="7"></a></h2>
-<pre>3.05 (16th February, 2015)</pre>
+<pre>3.05.5 (3rd June, 2016)</pre>
 <h2>REFERENCES:<a name="8"></a></h2>
 <pre>Griffies, S. M., 2004: Fundamentals of Ocean Climate Models. Princeton,
  NJ: Princeton University Press, 518 pp + xxxiv.</pre>
@@ -146,12 +193,11 @@ lat = 4;</pre>
   <a href="../pdf/Nsquared.pdf" title="TEOS-10">See section 3.10 and Eqn. (3.10.2) of this TEOS-10 Manual.</a></pre>
 <pre>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003: 
  Accurate and computationally efficient algorithms for potential 
- temperature and density of seawater.  <em>J. Atmosph. Ocean. Tech.</em>, <b>20</b>,
+ temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
  pp. 730-741.</pre>
 <pre>Roquet, F., G. Madec, T.J. McDougall and P.M. Barker, 2015: Accurate
  polynomial expressions for the density and specific volume of seawater 
  using the TEOS-10 standard.  <em>Ocean Modelling</em>, <b>90</b>, pp. 29-43. 
  <a href="http://dx.doi.org/10.1016/j.ocemod.2015.04.002">http://dx.doi.org/10.1016/j.ocemod.2015.04.002</a></pre>
-
 <pre> The software is available from <a href="http://www.TEOS-10.org" title="TEOS-10">http://www.TEOS-10.org</a></pre></font>
   </div></body></html>
