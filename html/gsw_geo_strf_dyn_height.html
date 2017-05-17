@@ -88,11 +88,11 @@ SSO = 35.16504 g/kg and CT = 0 deg C.  This function calculates
 specific volume anomaly using the computationally efficient 75-term
 expression for specific volume (Roquet <em>et al.</em>, 2015). </pre>
 <pre>This function evaluates the pressure integral of specific volume using 
-SA and CT interpolated with respect to pressure using the method of 
-Reiniger and Ross (1968).  It uses a weighted mean of (i) values 
-obtained from linear interpolation of the two nearest data points, and 
-(ii) a linear extrapolation of the pairs of data above and below.  This 
-"curve fitting" method resembles the use of cubic splines. </pre>
+SA and CT interpolated with respect to the intergral of bouyancy 
+frequency N2 using the method of Barker et al. (2017).  This "curve 
+fitting" method uses a Piecewise Cubic Hermite Interpolating Polynomial 
+to produce a smooth curve with minimal artificial watermasses  between
+the observed data points.</pre>
 <pre>Note that the 75-term equation has been fitted in a restricted range of 
 parameter space, and is most accurate inside the "oceanographic funnel" 
 described in McDougall <em>et al.</em> (2003).  The GSW library function 
@@ -126,11 +126,11 @@ p =  [     10;      50;     125;     250;     600;    1000;]
 p_ref = 1000</pre>
 <pre>geo_strf_dyn_height = gsw_geo_strf_dyn_height(SA,CT,p,p_ref)</pre>
 <pre>geo_strf_dyn_height =</pre>
-<pre>  17.039204557769487
-  14.665853784722286
-  10.912861136923812
-   7.567928838774945
-   3.393524055565328
+<pre>  17.434370534476397
+  15.077272863514917
+  11.353433025780669
+   7.942688032614864
+   3.608928554434066
                    0</pre>
 <h2>EXAMPLE 2:</h2>
   <pre>SA = [34.7118; 34.8915; 35.0256; 34.8472; 34.7366; 34.7324;]
@@ -139,17 +139,20 @@ p =  [     10;      50;     125;     250;     600;    1000;]
 p_ref = 500</pre>
 <pre>geo_strf_dyn_height = gsw_geo_strf_dyn_height(SA,CT,p,p_ref)</pre>
 <pre>geo_strf_dyn_height =</pre>
-<pre>  12.558764379222421
-  10.185413606175217
-   6.432420958376745
-   3.087488660227876
-  -1.086916122981741
-  -4.480440178547068</pre>
+<pre>  12.723940504666212
+  10.366842833704730
+   6.643002995970482
+   3.232258002804677
+  -1.101501475376121
+  -4.710430029810187</pre>
 <h2>AUTHOR:<a name="6"></a></h2>
 <pre>Paul Barker and Trevor McDougall   [ <a href="mailto:help@teos-10.org">help@teos-10.org</a> ]</pre>
 <h2>VERSION NUMBER:<a name="7"></a></h2>
-<pre>3.06 (23rd November, 2016)</pre>
+<pre>3.06 (15th May, 2017)</pre>
 <h2>REFERENCES:<a name="8"></a></h2>
+<pre>Barker, P.M., T.J. McDougall and S.J. Wotherspoon, 2017: An 
+ interpolation method for oceanographic data. <em>J. Atmosph. Ocean. Tech.</em>
+  (To be submitted).</pre>
 <pre>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
  seawater - 2010: Calculation and use of thermodynamic properties.
  Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
@@ -159,8 +162,6 @@ p_ref = 500</pre>
  Accurate and computationally efficient algorithms for potential 
  temperature and density of seawater.  <em>J. Atmosph. Ocean. Tech.</em>, <b>20</b>,
  pp. 730-741.</pre>
-<pre>Reiniger, R.F., and C.K. Ross, 1968: A method of interpolation with
- application to oceanographic data. <em>Deep-Sea Res.</em>, <b>15</b>, pp. 185-193.</pre>
 <pre>Roquet, F., G. Madec, T.J. McDougall and P.M. Barker, 2015: Accurate
  polynomial expressions for the density and specific volume of seawater 
  using the TEOS-10 standard.  <em>Ocean Modelling</em>, <b>90</b>, pp. 29-43. 

@@ -1,9 +1,8 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <title>gsw_geo_strf_isopycnal_pc</title><style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>gsw_geo_strf_isopycnal_pc</title>
+<style type="text/css">
 
 body {
   background-color: white;
@@ -59,24 +58,25 @@ p.footer {
   color: gray;
 }
 
-  </style></head><body><div class="content">
- <h1>gsw_geo_strf_isopycnal_pc</h1>
+</style></head>
+<body><div class="content">
+<h1>gsw_geo_strf_isopycnal_pc</h1>
  <!--introduction-->
- <pre><font size="5"><b>approximate isopycnal geostrophic streamfunction 
+<pre><font size="5"><b>approximate isopycnal geostrophic streamfunction 
 for piecewise constant profiles (75-term equation)</b></font></pre><!--/introduction-->
- <font size="4"><h2>Contents</h2>
- <div><ul><li><a href="#1">USAGE:</a></li>
- <li><a href="#2">DESCRIPTION:</a></li>
- <li><a href="#3">INPUT:</a></li>
- <li><a href="#4">OUTPUT:</a></li>
- <li><a href="#5">EXAMPLE:</a></li>
- <li><a href="#6">AUTHOR:</a></li>
- <li><a href="#7">VERSION NUMBER:</a></li>
- <li><a href="#8">REFERENCES:</a></li></ul></div>
- <h2>USAGE:<a name="1"></a></h2>
- <pre>[geo_strf_McD_Klocker_pc, p_mid] = gsw_geo_strf_isopycnal_pc(SA,CT,delta_p,gamma_n,layer_indx,A)</pre>
- <h2>DESCRIPTION:<a name="2"></a></h2>
- <pre>Calculates the McDougall-Klocker geostrophic streamfunction (see Eqn.
+<font size="4"><h2>Contents</h2>
+<div><ul><li><a href="#1">USAGE:</a></li>
+<li><a href="#2">DESCRIPTION:</a></li>
+<li><a href="#3">INPUT:</a></li>
+<li><a href="#4">OUTPUT:</a></li>
+<li><a href="#5">EXAMPLE:</a></li>
+<li><a href="#6">AUTHOR:</a></li>
+<li><a href="#7">VERSION NUMBER:</a></li>
+<li><a href="#8">REFERENCES:</a></li></ul></div>
+<h2>USAGE:<a name="1"></a></h2>
+<pre>[geo_strf_McD_Klocker_pc, p_mid] = gsw_geo_strf_isopycnal_pc(SA,CT,delta_p,gamma_n,layer_indx,A)</pre>
+<h2>DESCRIPTION:<a name="2"></a></h2>
+<pre>Calculates the McDougall-Klocker geostrophic streamfunction (see Eqn.
 (3.30.1) of IOC et al. (2010).  This function is to used when the 
 Absolute Salinity and Conservative Temperature are piecewise constant in
 the vertical over sucessive pressure intervals of delta_p (such as in a 
@@ -141,7 +141,7 @@ layer_indx  = [   3;    5;]</pre>
  <h2>AUTHOR:<a name="6"></a></h2>
  <pre>Trevor McDougall and Paul Barker                    [ <a href="mailto:help@teos-10.org">help@teos-10.org</a> ]</pre>
  <h2>VERSION NUMBER:<a name="7"></a></h2>
-<pre>3.05 (16th February, 2015)</pre>
+<pre>3.06 (15th May, 2017)</pre>
  <h2>REFERENCES:<a name="8"></a></h2>
  <pre>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
  seawater - 2010: Calculation and use of thermodynamic properties.

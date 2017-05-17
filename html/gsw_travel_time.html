@@ -84,11 +84,12 @@ by the product of sound speed and the gravitational acceleration, grav,
 nonlinear dependence of sound speed and specific volume on their input
 parameters, the vertical data is interpolated so that the data is no
 more than max_dp_i apart (this is a presure interval). </pre>
-<pre>SA and CT are interpolated with respect to pressure using the method of 
-Reiniger and Ross (1968).  It uses a weighted mean of (i) values 
-obtained from linear interpolation of the two nearest data points, and
-(ii) a linear extrapolation of the pairs of data above and below.  This
-"curve fitting" method resembles the use of cubic splines.</pre>
+<pre>This function evaluates the pressure integral of specific volume using 
+SA and CT interpolated with respect to the intergral of bouyancy 
+frequency N2 using the method of Barker et al. (2017).  This "curve 
+fitting" method uses a Piecewise Cubic Hermite Interpolating Polynomial 
+to produce a smooth curve with minimal artificial watermasses  between
+the observed data points.</pre>
 <pre>The sound speed and specific volume calculations are based on the
 75-term equations for specific volume (Roquet et al., 2015), as opposed
 to being based on the Gibbs equations for specific volume and sound 
@@ -123,15 +124,15 @@ lat = 4;</pre>
 <pre>travel_time = gsw_travel_time(SA,CT,p,lat)</pre>
 <pre>travel_time =</pre>
 <pre>   -0.012974664679169
-  -0.064849476331145
-  -0.162314668075900
-  -0.326815471282151
-  -0.793721887720198
-  -1.328353359572043</pre>
+  -0.064855107994253
+  -0.162332460583092
+  -0.326722745089591
+  -0.793192260793049
+  -1.327126865746961</pre>
 <h2>AUTHOR:<a name="6"></a></h2>
 <pre>Paul Barker, Trevor McDougall and Randy Watts  [ <a href="mailto:help@teos-10.org">help@teos-10.org</a> ]</pre>
 <h2>VERSION NUMBER:<a name="7"></a></h2>
-<pre>3.05 (16th February, 2015)</pre>
+<pre>3.06 (15th May, 2017)</pre>
 <h2>REFERENCES:<a name="8"></a></h2>
 <pre>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
  seawater - 2010: Calculation and use of thermodynamic properties.

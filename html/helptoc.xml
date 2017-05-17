@@ -333,8 +333,11 @@
       <tocitem target="gsw_mlp.html" image="HelpIcon.FUNCTION">
         gsw_mlp<!-- mixed-layer pressure -->
       </tocitem>
-      <tocitem target="gsw_Nsquared_lowerlimit.html" image="HelpIcon.FUNCTION">
-        gsw_Nsquared_lowerlimit<!-- Nsquared_lowerlimit -->
+	  <tocitem target="gsw_Nsquared_lowerlimit.html" image="HelpIcon.FUNCTION">
+        gsw_Nsquared_lowerlimit<!-- recommended lower limit of the buoyancy (Brunt-Vaisala) frequency squared (N^2) -->
+      </tocitem>
+      <tocitem target="gsw_SA_CT_interp.html" image="HelpIcon.FUNCTION">
+        gsw_SA_CT_interp<!-- SA-CT interpolation -->
       </tocitem>
 
 
@@ -949,6 +952,9 @@
       </tocitem>
 	  <tocitem target="gsw_dilution_coefficient_t_exact .html" image="HelpIcon.FUNCTION">
         gsw_dilution_coefficient_t_exact <!-- dilution coefficient -->
+      </tocitem>
+      <tocitem target="gsw_Gibbs_energy_t_exact.html" image="HelpIcon.FUNCTION">
+        gsw_Gibbs_energy_t_exact<!-- Gibbs energy -->
       </tocitem>
       <tocitem target="gsw_Helmholtz_energy_t_exact.html" image="HelpIcon.FUNCTION">
         gsw_Helmholtz_energy_t_exact<!-- Helmholtz energy -->
